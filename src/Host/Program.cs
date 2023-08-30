@@ -1,8 +1,11 @@
 using BookStoreApi.Application;
 using BookStoreApi.Host.Configuration;
 using BookStoreApi.Infrastructure;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
 
 // Add services to the container.
 builder.Services.AddApplicationServices();
@@ -29,4 +32,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseSerilogRequestLogging();
 app.Run();

@@ -16,13 +16,16 @@ public class ExecutionBehaviour<TRequest, TResponse> : IPipelineBehavior<TReques
     {
         try
         {
+            var requestName = typeof(TRequest).Name;
+            _logger.LogInformation("BookStoreApi {Name}: {@Request}", requestName, request);
+
             return await next();
         }
         catch (Exception ex)
         {
             var requestName = typeof(TRequest).Name;
 
-            _logger.LogError(ex, "BookStoreApi Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
+            _logger.LogError(ex, "BookStoreApi {Name} error: Unhandled Exception for Request / {@Request}", requestName, request);
 
             throw;
         }

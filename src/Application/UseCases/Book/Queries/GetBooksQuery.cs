@@ -20,7 +20,6 @@ public class GetBooksQueryHandler : IRequestHandler<GetBooksQuery, ApplicationRe
     public async Task<ApplicationResponse<IEnumerable<BookResponse>>> Handle(GetBooksQuery request, CancellationToken cancellationToken)
     {
         var result = new ApplicationResponse<IEnumerable<BookResponse>>();
-
         if (string.IsNullOrEmpty(request.Category))
         {
             var getBooks = await _bookRepository.GetBooks();
