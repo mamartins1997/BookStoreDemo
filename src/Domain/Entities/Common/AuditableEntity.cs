@@ -2,9 +2,9 @@
 
 public abstract  class AuditableEntity : BaseEntity
 {
-    public DateTimeOffset Created { get; set; }
+    public DateTime Created { get; set; }
     
-    public DateTimeOffset LastModified { get; set; }
+    public DateTime? LastModified { get; set; }
 
     public void SetLastModified()
         => this.LastModified = DateTime.Now;

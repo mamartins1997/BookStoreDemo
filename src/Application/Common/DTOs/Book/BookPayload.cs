@@ -6,5 +6,5 @@ public class BookPayload
     public string? Description { get; set; }
     public string? Category { get; set; }
     public string? Author { get; set; }
-    public decimal Price { get; set; }
+    public decimal? Price { get; set; }
 }

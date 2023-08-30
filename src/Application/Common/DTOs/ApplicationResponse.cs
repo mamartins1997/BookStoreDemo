@@ -7,8 +7,8 @@ public class ApplicationResponse<T>
         this.Errors = new Dictionary<string, string>();
     }
     
-    private T? Content { get; set; }
-    private IDictionary<string, string>? Errors { get; set; }
+    public T? Content { get; set; }
+    public IDictionary<string, string>? Errors { get; set; }
     
     public void SetContentValue(T content)
     {
@@ -18,5 +18,11 @@ public class ApplicationResponse<T>
     public void AddError(string code, string error)
     {
         this.Errors?.Add(code, error);
+    }
+
+    public bool HasError()
+    {
+        var dictionary = this.Errors;
+        return dictionary != null && dictionary.Any();
     }
 }

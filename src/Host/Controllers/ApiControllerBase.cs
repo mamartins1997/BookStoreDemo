@@ -8,11 +8,10 @@ namespace BookStoreApi.Host.Controllers;
 [Produces("application/json")]
 public class ApiControllerBase : ControllerBase
 {
-    private ISender _mediator;
+    public ISender _mediator;
     public ApiControllerBase(ISender mediator)
     {
         _mediator = mediator;
     }
-
-        
+    
 }
