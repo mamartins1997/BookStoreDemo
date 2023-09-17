@@ -18,11 +18,12 @@ public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, Appli
     
     public async Task<ApplicationResponse<bool>> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
     {
-        var result = new ApplicationResponse<bool>();
+        throw new Exception("Fake Error");
+        //var result = new ApplicationResponse<bool>();
 
-        await _bookRepository.DeleteBook(request.Id);
+        //await _bookRepository.DeleteBook(request.Id);
         
-        result.SetContentValue(true);
-        return result;
+        //result.SetContentValue(true);
+        //return result;
     }
 }

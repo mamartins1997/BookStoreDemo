@@ -116,7 +116,7 @@ public class BookStoreController : ApiControllerBase
     [Produces("application/json")]
     [ProducesResponseType(typeof(ApplicationResponse<bool>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> UpdateBook([FromRoute] string id)
+    public async Task<IActionResult> DeleteBook([FromRoute] string id)
     {
         try
         {

@@ -17,15 +17,20 @@ public class ExecutionBehaviour<TRequest, TResponse> : IPipelineBehavior<TReques
         try
         {
             var requestName = typeof(TRequest).Name;
-            _logger.LogInformation("BookStoreApi {Name}: {@Request}", requestName, request);
 
-            return await next();
+            var result = await next();
+
+            var executionResult = new { UserInfo = new { UserName = "marcelo", UserId = Guid.NewGuid() }, Request = request, Response = result };
+            _logger.LogInformation("{Name}: {@Request}", requestName, executionResult);
+
+            return result;
         }
         catch (Exception ex)
         {
             var requestName = typeof(TRequest).Name;
+            var teste = new { UserInfo = new { UserName = "marcelo", UserId = Guid.NewGuid() }, PayloadInfo = request };
 
-            _logger.LogError(ex, "BookStoreApi {Name} error: Unhandled Exception for Request / {@Request}", requestName, request);
+            _logger.LogError(ex, "{Name}: {@Request}", requestName, teste);
 
             throw;
         }
